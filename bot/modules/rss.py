@@ -15,7 +15,7 @@ def rss_list(update, context):
     if len(rss_dict) > 0:
         list_feed = "<b>Your subscriptions: </b>\n\n"
         for title, url in list(rss_dict.items()):
-            list_feed += f"<b>Title:</b> <code>{title}</code>\n<b>Feed Url: </b><code>{url[0]}</code>\n\n"
+            list_feed += f"<b>Title:</b> <code>{title}</code>\n<b>Feed Url: </b>{url[0]}\n\n"
         sendMessage(list_feed, context.bot, update)
     else:
         sendMessage("No subscriptions.", context.bot, update)
@@ -37,7 +37,7 @@ def rss_get(update, context):
                     except IndexError:
                         link = rss_d.entries[item_num]['link']
                     item_info += f"<b>Name: </b><code>{rss_d.entries[item_num]['title'].replace('>', '').replace('<', '')}</code>\n"
-                    item_info += f"<b>Link: </b><code>{link}</code>\n\n"
+                    item_info += f"<b>Link: </b>{link}\n\n"
                 editMessage(item_info, msg)
             except IndexError as e:
                 LOGGER.error(str(e))
@@ -82,7 +82,7 @@ def rss_sub(update, context):
                 link = rss_d.entries[0]['links'][1]['href']
             except IndexError:
                 link = rss_d.entries[0]['link']
-            sub_msg += f"\n\n<b>Link: </b><code>{link}</code>"
+            sub_msg += f"\n\n<b>Link: </b>{link}"
             sub_msg += f"\n\n<b>Filters: </b><code>{filters}</code>"
             last_link = str(rss_d.entries[0]['link'])
             last_title = str(rss_d.entries[0]['title'])
@@ -182,7 +182,7 @@ def rss_monitor(context):
                     feed_msg = f"{RSS_COMMAND} {url}"
                 else:
                     feed_msg = f"<b>Name: </b><code>{rss_d.entries[feed_count]['title'].replace('>', '').replace('<', '')}</code>\n\n"
-                    feed_msg += f"<b>Link: </b><code>{url}</code>"
+                    feed_msg += f"<b>Link: </b>{url}"
                 sendRss(feed_msg, context.bot)
                 feed_count += 1
                 sleep(5)
