@@ -62,8 +62,8 @@ def stats(update, context):
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("Updates Channel", "https://t.me/heliosmirror")
-    buttons.buildbutton("Support Group", "https://t.me/mirrorsociety")
+    buttons.buildbutton("Bot", "https://t.me/OverModulerbot")
+    buttons.buildbutton("Report Group", "https://t.me/AVEYCAMP")
     uname = f'<a href="tg://user?id={update.message.from_user.id}">{update.message.from_user.first_name}</a>'
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
@@ -210,12 +210,12 @@ leech_help_string_telegraph = f'''<br>
 '''
 if LEECH_ENABLED:
     help = telegraph.create_page(
-        title='Helios-Mirror & Leech Help',
+        title='Over Modular Help',
         content=mirror_help_string_telegraph + leech_help_string_telegraph,
     )["path"]
 else:
     help = telegraph.create_page(
-        title='Helios-Mirror Help',
+        title='Over Modular Help',
         content=mirror_help_string_telegraph,
     )["path"]
 
@@ -223,7 +223,7 @@ else:
 if user_id == OWNER_ID:
     try:
         help = telegraph.create_page(
-        title='Helios-Mirror Help',
+        title='Over Modular Help',
         content=mirror_help_string_telegraph + leech_help_string_telegraph + sudo_help_string_telegraph,
     )["path"]
     except Exception as e:

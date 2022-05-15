@@ -549,30 +549,30 @@ except KeyError:
 try:
     GD_INFO = getConfig('GD_INFO')
     if len(GD_INFO) == 0:
-        GD_INFO = 'Uploaded by Helios Mirror Bot'
+        GD_INFO = 'Uploaded by Over Modular'
 except KeyError:
-    GD_INFO = 'Uploaded by Helios Mirror Bot'
+    GD_INFO = 'Uploaded by Over Modular'
 
 try:
     TITLE_NAME = getConfig('TITLE_NAME')
     if len(TITLE_NAME) == 0:
-        TITLE_NAME = 'Helios-Mirror-Search'
+        TITLE_NAME = 'OverModular Search 🔎'
 except KeyError:
-    TITLE_NAME = 'Helios-Mirror-Search'
+    TITLE_NAME = 'OverModular Search 🔎'
 
 try:
     AUTHOR_NAME = getConfig('AUTHOR_NAME')
     if len(AUTHOR_NAME) == 0:
-        AUTHOR_NAME = 'Helios-Mirror-Bot'
+        AUTHOR_NAME = 'OM🔥'
 except KeyError:
-    AUTHOR_NAME = 'Helios-Mirror-Bot'
+    AUTHOR_NAME = 'OM🔥'
 
 try:
     AUTHOR_URL = getConfig('AUTHOR_URL')
     if len(AUTHOR_URL) == 0:
-        AUTHOR_URL = 'https://t.me/heliosmirror'
+        AUTHOR_URL = 'https://t.me/overmodulerbot'
 except KeyError:
-    AUTHOR_URL = 'https://t.me/heliosmirror'
+    AUTHOR_URL = 'https://t.me/overmodulerbot'
 
 try:
     BOT_PM = getConfig('BOT_PM')

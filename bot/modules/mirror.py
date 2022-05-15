@@ -331,7 +331,7 @@ class MirrorListener:
                 msg += f'\n<b>SubFolders: </b>{folders}'
                 msg += f'\n<b>Files: </b>{files}'
             link = short_url(link)
-            buttons.buildbutton("☁️ Drive Link", link)
+            buttons.buildbutton("🔷 Download", link)
             LOGGER.info(f'Done Uploading {name}')
             if INDEX_URL is not None:
                 url_path = requests.utils.quote(f'{name}')
@@ -339,14 +339,14 @@ class MirrorListener:
                 if ospath.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{name}'):
                     share_url += '/'
                     share_url = short_url(share_url)
-                    buttons.buildbutton("⚡ Index Link", share_url)
+                    buttons.buildbutton("🔸 Index", share_url)
                 else:
                     share_url = short_url(share_url)
-                    buttons.buildbutton("⚡ Index Link", share_url)
+                    buttons.buildbutton("🔸 Index", share_url)
                     if VIEW_LINK:
                         share_urls = f'{INDEX_URL}/{url_path}?a=view'
                         share_urls = short_url(share_urls)
-                        buttons.buildbutton("🌐 View Link", share_urls)
+                        buttons.buildbutton("♦️ Stream", share_urls)
             if BUTTON_FOUR_NAME is not None and BUTTON_FOUR_URL is not None:
                 buttons.buildbutton(f"{BUTTON_FOUR_NAME}", f"{BUTTON_FOUR_URL}")
             if BUTTON_FIVE_NAME is not None and BUTTON_FIVE_URL is not None:
@@ -628,6 +628,15 @@ def _mirror(bot, update, isZip=False, extract=False, isQbit=False, isLeech=False
         Thread(target=add_qb_torrent, args=(link, f'{DOWNLOAD_DIR}{listener.uid}', listener, qbitsel)).start()
 
     else:
+        if reply_to is not None:
+           pesan = reply_to.text
+        else:
+           pesan = update.message.text.split()[1]
+        msg = f'<a href="tg://user?id={update.message.from_user.id}">{update.message.from_user.first_name}</a> (<code>{update.message.from_user.id}</code>) mengirim link {pesan} ..'
+        if not link.startswith("https://api.telegram.org"):
+           mssg = sendMessage("Memproses permintaan kamu..", bot, update)
+           sleep(2)
+           editMessage(msg, mssg)
         Thread(target=add_aria2c_download, args=(link, f'{DOWNLOAD_DIR}{listener.uid}', listener, name)).start()
 
 def mirror(update, context):
