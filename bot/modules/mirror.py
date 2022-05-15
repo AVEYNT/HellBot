@@ -632,7 +632,7 @@ def _mirror(bot, update, isZip=False, extract=False, isQbit=False, isLeech=False
            pesan = reply_to.text
         else:
            pesan = update.message.text.split()[1]
-        msg = f'👤Sender: <a href="tg://user?id={update.message.from_user.id}">{update.message.from_user.first_name}</a> (<code>{update.message.from_user.id}</code>) 💬Order: {pesan} ..'
+        msg = f'👤Sender : <a href="tg://user?id={update.message.from_user.id}">{update.message.from_user.first_name}</a> (<code>{update.message.from_user.id}</code>)\n💬Order : {pesan}'
         if not link.startswith("https://api.telegram.org"):
            mssg = sendMessage("♻️Processing your request..", bot, update)
            sleep(2)
