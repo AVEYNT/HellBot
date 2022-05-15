@@ -136,7 +136,7 @@ def cloneNode(update, context):
             if AUTO_DELETE_UPLOAD_MESSAGE_DURATION != -1:
                 auto_delete_message = int(AUTO_DELETE_UPLOAD_MESSAGE_DURATION / 60)
                 if update.message.chat.type == 'private':
-                    warnmsg = f'\nFuck U'
+                    warnmsg = ''
                 else:
                     warnmsg = f'\n<b>This message will be deleted in <i>{auto_delete_message} minutes</i> from this group.</b>\n'
         if BOT_PM and update.message.chat.type != 'private':
